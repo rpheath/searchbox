@@ -1,0 +1,1 @@
+h1. Searchbox: a live search plugin for jQuery
