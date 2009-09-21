@@ -1,1 +1,38 @@
-h1. Searchbox: a live search plugin for jQuery
+h1. Searchbox
+
+This is a jQuery plugin that turns any textbox into a live search, or a "searchbox".
+
+h3. Usage
+
+<pre><code>$('input.search').searchbox()</code></pre>
+
+That's it, really. There are a few configuration options:
+
+* <code>url</code> - a GET request is sent to this url (default: '/search')
+* <code>param</code> - the actually parameter that gets sent to the server (default: 'query')
+* <code>dom_id</code> - the element that gets updated with the results (default: '#results')
+* <code>delay</code> - the keystroke delay (default: 100 ms)
+* <code>loading_css</code> - the css for an ajax spinner/loading bar (default: '#loading')
+
+So, customizing each config option might look like this:
+
+<pre><code>
+$('input.search').searchbox({
+  url: '/your/search/url',
+  param: 'q',
+  dom_id: '#thumbnails',
+  delay: 250,
+  loading_css: '#spinner'
+})</code></pre>
+
+h3. Hooks
+
+There are a few places you can hook into the plugin by binding a function to specific events. Here are the events:
+
+* <code>init.searchbox</code> - triggered once when the plugin code executes
+* <code>before.searchbox</code> - triggered right before the search is performed
+* <code>after.searchbox</code> - triggered right after the search completes
+
+h3. License
+
+(c) 2009 Ryan Heath, released under the MIT license

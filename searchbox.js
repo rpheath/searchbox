@@ -1,7 +1,6 @@
 (function($) {
   $.searchbox = {}
   
-  // defaults
   $.extend(true, $.searchbox, {
     settings: {
       url: '/search',
@@ -59,11 +58,10 @@
     var settings = $.extend(true, $.searchbox.settings, config || {})
     
     $(document).trigger('init.searchbox')
+    $.searchbox.idle()
     
     return this.each(function() {
       var $input = $(this)
-      
-      $.searchbox.idle()
       
       $input
       .focus()
