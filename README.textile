@@ -16,8 +16,7 @@ That's it, really. There are a few configuration options:
 
 So, customizing each config option might look like this:
 
-<pre><code>
-$('input.search').searchbox({
+<pre><code>$('input.search').searchbox({
   url: '/your/search/url',
   param: 'q',
   dom_id: '#thumbnails',
@@ -32,6 +31,10 @@ There are a few places you can hook into the plugin by binding a function to spe
 * <code>init.searchbox</code> - triggered once when the plugin code executes
 * <code>before.searchbox</code> - triggered right before the search is performed
 * <code>after.searchbox</code> - triggered right after the search completes
+
+Here's an example of how to make use of them:
+
+<pre><code>$(document).bind('init.searchbox', function() { ... })</code></pre>
 
 h3. License
 
