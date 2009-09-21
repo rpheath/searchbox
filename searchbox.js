@@ -10,22 +10,18 @@
       loading_css: '#loading'
     },
     
-    // while the search is being performed
     loading: function() {
       $($.searchbox.settings.loading_css).show()
     },
     
-    // clear outdated timers
     resetTimer: function(timer) {
       if (timer) clearTimeout(timer)
     },
     
-    // before/after performing search
     idle: function() {
       $($.searchbox.settings.loading_css).hide()
     },
     
-    // submits the query and handles response
     process: function(terms) {
       var path = $.searchbox.settings.url.split('?'),
         query = [$.searchbox.settings.param, '=', terms].join(''),
@@ -38,21 +34,16 @@
       })
     },
     
-    // when the search starts
     start: function() {
       $(document).trigger('before.searchbox')
       $.searchbox.loading()
     },
     
-    // when the search is done
     stop: function() {
       $.searchbox.idle()
       $(document).trigger('after.searchbox')
     }
   })
-  
-  // Example:
-  //  $('input.search').searchbox({ url: '/your/search/url' })
   
   $.fn.searchbox = function(config) {
     var settings = $.extend(true, $.searchbox.settings, config || {})
