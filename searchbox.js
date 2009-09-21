@@ -1,8 +1,5 @@
 (function($) {
-  $.searchbox = {
-    before: function() {},
-    after: function() {}
-  }
+  $.searchbox = {}
   
   // defaults
   $.extend(true, $.searchbox, {
@@ -10,7 +7,7 @@
       url: '/search',
       param: 'query',
       dom_id: '#results',
-      delay: 250,
+      delay: 100,
       loading_css: '#loading'
     },
     
@@ -44,14 +41,14 @@
     
     // when the search starts
     start: function() {
-      $.searchbox.before()
+      $(document).trigger('before.searchbox')
       $.searchbox.loading()
     },
     
     // when the search is done
     stop: function() {
       $.searchbox.idle()
-      $.searchbox.after()
+      $(document).trigger('after.searchbox')
     }
   })
   
@@ -60,6 +57,8 @@
   
   $.fn.searchbox = function(config) {
     var settings = $.extend(true, $.searchbox.settings, config || {})
+    
+    $(document).trigger('init.searchbox')
     
     return this.each(function() {
       var $input = $(this)
