@@ -1,5 +1,8 @@
 (function($) {
-  $.searchbox = {}
+  $.searchbox = {
+    before: function() {},
+    after: function() {}
+  }
   
   // defaults
   $.extend(true, $.searchbox, {
@@ -37,6 +40,18 @@
       $.get([base, '?', query_string].join(''), function(data) {
         $($.searchbox.settings.dom_id).html(data)
       })
+    },
+    
+    // when the search starts
+    start: function() {
+      $.searchbox.before()
+      $.searchbox.loading()
+    },
+    
+    // when the search is done
+    stop: function() {
+      $.searchbox.idle()
+      $.searchbox.after()
     }
   })
   
@@ -53,8 +68,8 @@
       
       $input
       .focus()
-      .ajaxStart(function() { $.searchbox.loading() })
-      .ajaxStop(function() { $.searchbox.idle() })
+      .ajaxStart(function() { $.searchbox.start() })
+      .ajaxStop(function() { $.searchbox.stop() })
       .keyup(function() {
         if ($input.val() != this.previousValue) {
           $.searchbox.resetTimer(this.timer)
