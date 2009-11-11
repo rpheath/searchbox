@@ -6,7 +6,7 @@
       url: '/search',
       param: 'query',
       dom_id: '#results',
-      delay: 100,
+      delay: 250,
       loading_css: '#loading'
     },
     
