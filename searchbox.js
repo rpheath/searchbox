@@ -1,3 +1,6 @@
+// Author: Ryan Heath
+// http://rpheath.com
+
 (function($) {
   $.searchbox = {}
   
